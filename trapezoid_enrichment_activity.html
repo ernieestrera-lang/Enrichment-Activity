@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trapezoid Enrichment Challenge</title>
+<style>
+  body{
+    font-family: Arial, sans-serif;
+    background:#f5f7fb;
+    margin:0;
+    color:#222;
+  }
+  .wrap{
+    max-width:900px;
+    margin:auto;
+    padding:24px;
+  }
+  .card{
+    background:#fff;
+    border-radius:16px;
+    padding:24px;
+    margin:18px 0;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+  }
+  h1,h2,h3{margin-top:0}
+  .hero{
+    text-align:center;
+    padding:30px 20px;
+  }
+  .badge{
+    display:inline-block;
+    background:#eef2ff;
+    padding:8px 14px;
+    border-radius:999px;
+    font-weight:bold;
+    margin-bottom:12px;
+  }
+  input[type="number"], input[type="text"], textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    margin:8px 0 14px;
+    border:1px solid #bbb;
+    border-radius:10px;
+    font-size:16px;
+  }
+  .choices label{
+    display:block;
+    padding:10px;
+    margin:7px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  button{
+    padding:11px 18px;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  .feedback{
+    margin-top:12px;
+    font-weight:bold;
+  }
+  .hint{
+    background:#fff8e1;
+    border-left:5px solid #f4b400;
+    padding:12px;
+    margin:12px 0;
+    border-radius:8px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px;
+  }
+  th,td{
+    border:1px solid #aaa;
+    padding:10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{background:#f0f3f8}
+  .rubric th,.rubric td{text-align:center}
+  .rubric td:first-child,.rubric th:first-child{text-align:left}
+  .final{
+    border:2px dashed #888;
+  }
+  .small{font-size:14px;color:#555}
+  .complete{
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    margin-top:20px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="card hero">
+    <div class="badge">ENRICHMENT ACTIVITY</div>
+    <h1>Trapezoid Challenge</h1>
+    <p>Apply what you have learned about trapezoids and isosceles trapezoids to solve real-life problems.</p>
+    <p><strong>Directions:</strong> Read each situation carefully. Enter or select your answer, then click <em>Check Answer</em>.</p>
+  </div>
+
+  <div class="card">
+    <h2>Challenge 1: Supporting the School Stage</h2>
+    <p>The front of a school stage has a trapezoid-shaped frame. Its two parallel bases measure <strong>8 m</strong> and <strong>16 m</strong>. A horizontal support beam connects the midpoints of the two legs.</p>
+    <label>What is the length of the supporting beam?</label>
+    <input id="c1" type="number" placeholder="Enter your answer in meters">
+    <button onclick="check1()">Check Answer</button>
+    <div id="f1" class="feedback"></div>
+  </div>
+
+  <div class="card">
+    <h2>Challenge 2: The Trapezoid Window</h2>
+    <p>A classroom window is shaped like an <strong>isosceles trapezoid</strong>. One angle along the lower base measures <strong>68°</strong>.</p>
+    <label>2A. What is the measure of the other angle along the same base?</label>
+    <input id="c2a" type="number" placeholder="Enter angle measure">
+    <button onclick="check2a()">Check Answer</button>
+    <div id="f2a" class="feedback"></div>
+
+    <label style="margin-top:18px;display:block;">2B. What is the measure of each angle along the upper base?</label>
+    <input id="c2b" type="number" placeholder="Enter angle measure">
+    <button onclick="check2b()">Check Answer</button>
+    <div id="f2b" class="feedback"></div>
+  </div>
+
+  <div class="card">
+    <h2>Challenge 3: Complete the Garden</h2>
+    <p>A landscaped garden is shaped like a trapezoid. A pathway connecting the midpoints of its legs is <strong>18 m</strong> long. One base measures <strong>12 m</strong>, while the other base is unknown.</p>
+    <label>Find the length of the missing base.</label>
+    <input id="c3" type="number" placeholder="Enter your answer in meters">
+    <button onclick="check3()">Check Answer</button>
+    <div id="f3" class="feedback"></div>
+    <div class="hint"><strong>Hint:</strong> Use the trapezoid midsegment formula and solve for the unknown base.</div>
+  </div>
+
+  <div class="card">
+    <h2>Challenge 4: Choose the Correct Design</h2>
+    <p>A carpenter is choosing a design for an <strong>isosceles trapezoid-shaped frame</strong>.</p>
+    <table>
+      <tr><th>Design</th><th>Interior Angles</th></tr>
+      <tr><td>A</td><td>70°, 70°, 110°, 110°</td></tr>
+      <tr><td>B</td><td>60°, 80°, 100°, 120°</td></tr>
+      <tr><td>C</td><td>75°, 85°, 105°, 95°</td></tr>
+    </table>
+    <p><strong>Which design correctly represents an isosceles trapezoid?</strong></p>
+    <div class="choices">
+      <label><input type="radio" name="c4" value="A"> Design A</label>
+      <label><input type="radio" name="c4" value="B"> Design B</label>
+      <label><input type="radio" name="c4" value="C"> Design C</label>
+    </div>
+    <button onclick="check4()">Check Answer</button>
+    <div id="f4" class="feedback"></div>
+  </div>
+
+  <div class="card final">
+    <h2>⭐ Final Challenge: Create Your Own Trapezoid Problem</h2>
+    <p><strong>This task will be completed on one sheet of bond paper.</strong></p>
+
+    <h3>Your Task</h3>
+    <p>Look around your home, school, or community and identify an object or structure that can be represented by a trapezoid.</p>
+
+    <ol>
+      <li>Draw the trapezoid-shaped object neatly on bond paper.</li>
+      <li>Label the important parts and assign reasonable measurements.</li>
+      <li>Create one original problem involving at least one property of a trapezoid.</li>
+      <li>Show your complete solution.</li>
+      <li>Write a short explanation of the trapezoid property you used and why it applies.</li>
+    </ol>
+
+    <h3>Rubric for the Final Challenge</h3>
+    <table class="rubric">
+      <tr>
+        <th>Criteria</th>
+        <th>4 - Excellent</th>
+        <th>3 - Good</th>
+        <th>2 - Developing</th>
+        <th>1 - Beginning</th>
+      </tr>
+      <tr>
+        <td><strong>Accuracy of Mathematical Content</strong></td>
+        <td>All measurements, properties, and solution steps are correct.</td>
+        <td>Minor error but the solution and concept are mostly correct.</td>
+        <td>Several errors are present but some understanding is shown.</td>
+        <td>Major errors show limited understanding of trapezoid properties.</td>
+      </tr>
+      <tr>
+        <td><strong>Application of Trapezoid Property</strong></td>
+        <td>Correct property is clearly identified and appropriately applied.</td>
+        <td>Correct property is used with a mostly clear explanation.</td>
+        <td>Property is identified but application or explanation is incomplete.</td>
+        <td>Property is incorrect or not explained.</td>
+      </tr>
+      <tr>
+        <td><strong>Problem Construction and Solution</strong></td>
+        <td>Problem is realistic, complete, original, and solved clearly.</td>
+        <td>Problem is appropriate and solution is mostly complete.</td>
+        <td>Problem or solution lacks some important details.</td>
+        <td>Problem is unclear, incomplete, or not solved.</td>
+      </tr>
+      <tr>
+        <td><strong>Drawing and Presentation</strong></td>
+        <td>Drawing is neat, labeled, organized, and easy to understand.</td>
+        <td>Drawing is clear with only minor presentation issues.</td>
+        <td>Drawing is understandable but lacks neatness or labels.</td>
+        <td>Drawing is difficult to understand or incomplete.</td>
+      </tr>
+    </table>
+
+    <p><strong>Total Score: ____ / 16</strong></p>
+    <p class="small">Submit your completed bond-paper output as instructed by your teacher.</p>
+  </div>
+
+  <div class="card complete">
+    Great job! You have completed the Trapezoid Enrichment Challenge.
+  </div>
+</div>
+
+<script>
+function setFeedback(id, ok, good, bad){
+  const el=document.getElementById(id);
+  el.textContent= ok ? good : bad;
+  el.style.color= ok ? "green" : "crimson";
+}
+function check1(){
+  const v=parseFloat(document.getElementById("c1").value);
+  setFeedback("f1", v===12, "Correct! The midsegment is 12 m.", "Try again. Add the two bases, then divide by 2.");
+}
+function check2a(){
+  const v=parseFloat(document.getElementById("c2a").value);
+  setFeedback("f2a", v===68, "Correct! Base angles of an isosceles trapezoid are congruent.", "Try again. Think about the base angles of an isosceles trapezoid.");
+}
+function check2b(){
+  const v=parseFloat(document.getElementById("c2b").value);
+  setFeedback("f2b", v===112, "Correct! Each upper angle is 112°.", "Try again. Consecutive angles along a leg are supplementary.");
+}
+function check3(){
+  const v=parseFloat(document.getElementById("c3").value);
+  setFeedback("f3", v===24, "Correct! The missing base is 24 m.", "Try again. Use 18 = (12 + b) / 2.");
+}
+function check4(){
+  const picked=document.querySelector('input[name="c4"]:checked');
+  if(!picked){
+    setFeedback("f4", false, "", "Please select an answer first.");
+    return;
+  }
+  setFeedback("f4", picked.value==="A", "Correct! Design A has congruent base angles and supplementary consecutive angles.", "Try again. Check which design has pairs of congruent base angles.");
+}
+</script>
+</body>
+</html>
